@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Searchbar from './Searchbar/Searchbar';
-import ImageGallery from './ImageGallery/ImageGallery';
+import { ImageGallery } from './ImageGallery/ImageGallery';
 import Modal from './Modal/Modal';
 import Loader from './Loader/Loader';
 import Button from './Button/Button';
@@ -62,7 +62,7 @@ export const App = () => {
   };
 
   const loadMore = () => setPage(prev => prev + 1);
-  const showModal = imageUrl => setSelectedImage(imageUrl);
+  const showModal = image => setSelectedImage(image);
   const closeModal = () => setSelectedImage(null);
 
   const hasMore = images.length < totalHits;
@@ -75,9 +75,7 @@ export const App = () => {
 
       {loading && <Loader />}
       {hasMore && !loading && <Button onClick={loadMore} />}
-      {selectedImage && (
-        <Modal largeImageURL={selectedImage} onClose={closeModal} />
-      )}
+      {selectedImage && <Modal image={selectedImage} onClose={closeModal} />}
     </div>
   );
 };
