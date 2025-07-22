@@ -3,7 +3,7 @@ import './ImageGalleryItem.css';
 
 export default function ImageGalleryItem({ image, onClick }) {
   return (
-    <li className="gallery-item" onClick={() => onClick(image.largeImageURL)}>
+    <li className="gallery-item" onClick={() => onClick(image)}>
       <img src={image.webformatURL} alt={image.tags} />
     </li>
   );
